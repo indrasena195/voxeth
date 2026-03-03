@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOXETH | AI Digital Humans for the Real World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Syne:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --accent-cyan: #00F2FF;
+            --accent-blue: #0A84FF;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text-main: #FFFFFF;
+            --text-dim: #A0A0A0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Particles Overlay */
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #0a1b2e 0%, #050505 100%);
+            z-index: -2;
+        }
+
+        /* Entrance Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        header {
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 4px;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 15%;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff 20%, var(--accent-cyan) 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-group { display: flex; gap: 20px; }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            display: inline-block;
+        }
+
+        .btn-primary { background: var(--accent-cyan); color: #000; }
+        .btn-primary:hover { box-shadow: 0 0 30px rgba(0, 242, 255, 0.4); }
+
+        .btn-secondary { border: 1px solid var(--accent-cyan); color: var(--accent-cyan); }
+
+        section { padding: 120px 10%; }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--glass);
+            padding: 45px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 242, 255, 0.03);
+            transform: translateY(-10px);
+        }
+
+        .card h3 { color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.4rem; }
+
+        .contact-form {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--glass);
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        input:focus, textarea:focus { border-color: var(--accent-cyan); }
+
+        footer {
+            padding: 60px 10%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+    <header>
+        <a href="#" class="logo">VOXETH</a>
+        <a href="#contact" class="btn btn-secondary" style="padding: 0.6rem 1.5rem;">Contact</a>
+    </header>
+
+    <section class="hero">
+        <div class="reveal">
+            <h1>AI Digital Humans for the Real World</h1>
+            <p>VOXETH delivers intelligent, lifelike digital humans that engage, assist, and communicate in real time.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary magnetic">Request a Demo</a>
+                <a href="#industries" class="btn btn-secondary magnetic">See It in Action</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="industries">
+        <h2 class="section-title reveal">Industries We Serve</h2>
+        <div class="grid">
+            <div class="card reveal"><h3>Healthcare</h3><p>Virtual triage and medical assistants providing empathetic 24/7 patient support.</p></div>
+            <div class="card reveal"><h3>Education</h3><p>Next-gen AI teachers that provide personalized 1-on-1 tutoring sessions.</p></div>
+            <div class="card reveal"><h3>Corporate</h3><p>AI-driven receptionists and interactive trainers for the modern workforce.</p></div>
+            <div class="card reveal"><h3>Retail</h3><p>Digital shopping assistants that boost conversion through human-like interaction.</p></div>
+            <div class="card reveal"><h3>Government</h3><p>Public service avatars helping citizens navigate complex services in any language.</p></div>
+            <div class="card reveal"><h3>Events</h3><p>Hyper-realistic brand ambassadors and hosts for high-end virtual exhibitions.</p></div>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2 class="section-title reveal">What VOXETH Delivers</h2>
+        <div class="grid">
+            <div class="card reveal"><h3>Voice Tech</h3><p>Real-time conversations with sub-second latency for natural flow.</p></div>
+            <div class="card reveal"><h3>Intelligence</h3><p>Bespoke AI responses trained on your specific business knowledge base.</p></div>
+            <div class="card reveal"><h3>Deployment</h3><p>Deploy to web, kiosks, or massive LED screens with enterprise-grade security.</p></div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title reveal">Book a Demo</h2>
+        <div class="reveal">
+            <form class="contact-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Enterprise Email" required>
+                <textarea rows="5" placeholder="Tell us about your digital human vision..." required></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">Initialize Consultation</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 VOXETH Technologies. Humanizing the Digital Frontier.</p>
+    </footer>
+
+    <script>
+        // 1. Reveal Animations on Scroll
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 2. Magnetic Button Effect
+        const magneticBtns = document.querySelectorAll('.magnetic');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // 3. Form Submission Simulation
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.textContent = "Request Sent Successfully";
+            btn.style.background = "#00ff88";
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
