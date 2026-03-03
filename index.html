@@ -225,10 +225,10 @@
     <section id="contact">
         <h2 class="section-title reveal">Book a Demo</h2>
         <div class="reveal">
-            <form class="contact-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Enterprise Email" required>
-                <textarea rows="5" placeholder="Tell us about your digital human vision..." required></textarea>
+            <form action="https://formspree.io/f/xbdavwkn" method="POST" class="contact-form">
+                <input type="text" name="name" placeholder="Full Name" autocomplete="name" required>
+                <input type="email" name="email" placeholder="Enterprise Email" autocomplete="email" required>
+                <textarea name="message" rows="5" placeholder="Tell us about your digital human vision..." required></textarea>
                 <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">Initialize Consultation</button>
             </form>
         </div>
